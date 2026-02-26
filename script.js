@@ -48,30 +48,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Scroll Reveal Animation
+// Scroll Reveal Animation - Disabled to show content immediately
 function reveal() {
-    const reveals = document.querySelectorAll('.reveal');
-    
-    reveals.forEach(element => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-            element.classList.add('active');
-        }
-    });
+    // Content is now visible by default - no scroll animation needed
 }
 
-// Add reveal class to elements
+// Add reveal class to elements - Disabled
 document.addEventListener('DOMContentLoaded', () => {
-    const elementsToReveal = document.querySelectorAll('section, .project-card, .skill-category, .stat-item');
-    elementsToReveal.forEach(element => {
-        element.classList.add('reveal');
-    });
+    // Elements are now visible immediately - no need to add reveal class
 });
 
-window.addEventListener('scroll', reveal);
+// Scroll event listener - Disabled
+// window.addEventListener('scroll', reveal);
 
 // Typing Animation for Hero Title
 function typeWriter() {
