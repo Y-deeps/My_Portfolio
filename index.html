@@ -73,7 +73,17 @@ nav {
 .nav-links a {
   color:var(--muted); text-decoration:none;
   font-size:0.82rem; font-weight:500; transition:color .2s;
+  position:relative;
 }
+.nav-links a::after {
+  content:''; position:absolute;
+  bottom:-4px; left:0;
+  width:0; height:2px;
+  background:var(--accent);
+  transition:width .3s;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after { width:100%; }
 .nav-links a:hover, .nav-links a.active { color:var(--accent); }
 .nav-r { display:flex; align-items:center; gap:1rem; }
 
@@ -98,7 +108,8 @@ nav {
 #home {
   min-height:100vh;
   display:flex; flex-direction:column; justify-content:center;
-  padding:130px 6% 80px; position:relative; overflow:hidden;
+  padding:110px 6% 60px; position:relative; overflow:hidden;
+  background: radial-gradient(circle at 20% 20%, rgba(255,140,97,0.05), transparent 40%);
 }
 .hero-deco {
   position:absolute; border-radius:50%; filter:blur(120px); pointer-events:none;
@@ -145,7 +156,7 @@ nav {
 
 .hero-intro {
   font-size:clamp(1rem,1.8vw,1.15rem); color:var(--muted);
-  max-width:620px; line-height:1.85;
+  max-width:650px; line-height:1.85;
   margin-bottom:.8rem;
   animation:fadeUp .5s .2s ease both;
 }
@@ -160,7 +171,7 @@ nav {
 
 .hero-btns {
   display:flex; flex-wrap:wrap; gap:.9rem;
-  margin-bottom:3rem;
+  margin-bottom:1.8rem;
   animation:fadeUp .5s .4s ease both;
 }
 .btn-primary {
@@ -205,7 +216,7 @@ nav {
 /* ════════════════════════════════
    SECTION COMMON
 ════════════════════════════════ */
-section { padding:110px 6%; }
+section { padding:70px 6%; max-width:1200px; margin:auto; }
 .sec-eyebrow {
   font-family:'DM Mono',monospace; font-size:.72rem;
   color:var(--accent); text-transform:uppercase;
@@ -217,7 +228,7 @@ section { padding:110px 6%; }
   font-weight:700; color:var(--text);
   letter-spacing:-.025em; line-height:1.2; margin-bottom:.7rem;
 }
-.sec-sub { color:var(--muted); font-size:1rem; max-width:520px; line-height:1.75; margin-bottom:3.5rem; }
+.sec-sub { color:var(--muted); font-size:1rem; max-width:520px; line-height:1.75; margin-bottom:2rem; }
 
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .65s ease,transform .65s ease; }
 .reveal.visible { opacity:1; transform:none; }
@@ -227,7 +238,7 @@ section { padding:110px 6%; }
 ════════════════════════════════ */
 #about { background:var(--surface); }
 .about-wrap { display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:start; }
-.about-body p { color:var(--muted); margin-bottom:1.3rem; font-size:1rem; line-height:1.85; }
+.about-body p { color:var(--muted); margin-bottom:1.3rem; font-size:1rem; line-height:1.85; max-width:650px; }
 .about-body p strong { color:var(--text); }
 .about-body p em { font-style:italic; color:var(--accent); font-family:'Lora',serif; }
 
@@ -272,7 +283,7 @@ section { padding:110px 6%; }
 .about-side { display:flex; flex-direction:column; gap:1.2rem; }
 .info-card {
   background:var(--card); border:1px solid var(--border);
-  border-radius:14px; padding:1.4rem 1.6rem;
+  border-radius:14px; padding:1rem 1.2rem;
   transition:border-color .3s,transform .3s;
 }
 .info-card:hover { border-color:var(--accent); transform:translateY(-3px); }
@@ -302,7 +313,7 @@ section { padding:110px 6%; }
 }
 .stab.active,.stab:hover { border-color:var(--accent); color:var(--accent); background:rgba(255,140,97,.05); }
 .spanel { display:none; }
-.spanel.active { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:.9rem; }
+.spanel.active { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:.6rem; }
 .skill-tile {
   background:var(--surface); border:1px solid var(--border);
   border-radius:12px; padding:1.2rem .8rem;
@@ -320,13 +331,13 @@ section { padding:110px 6%; }
    PROJECTS
 ════════════════════════════════ */
 #projects { background:var(--surface); }
-.proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; }
 .proj-card {
   background:var(--card); border:1px solid var(--border);
   border-radius:18px; overflow:hidden;
   display:flex; flex-direction:column; transition:all .3s;
 }
-.proj-card:hover { border-color:rgba(255,140,97,.35); transform:translateY(-6px); box-shadow:0 24px 60px var(--shadow); }
+.proj-card:hover { border-color:rgba(255,140,97,.4); transform:translateY(-6px) scale(1.01); box-shadow:0 20px 50px rgba(0,0,0,0.35); }
 .proj-card.big { grid-column:span 2; flex-direction:row; }
 .proj-thumb {
   background:var(--surface2);
@@ -334,7 +345,7 @@ section { padding:110px 6%; }
 }
 .proj-card.big .proj-thumb { width:220px; flex-shrink:0; min-height:unset; }
 .proj-thumb i { font-size:2.2rem; color:var(--muted); opacity:.4; }
-.proj-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; }
+.proj-body { padding:1.1rem; flex:1; display:flex; flex-direction:column; }
 .proj-type { font-family:'DM Mono',monospace; font-size:.68rem; color:var(--accent); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.5rem; }
 .proj-title { font-family:'Lora',serif; font-size:1.15rem; font-weight:700; color:var(--text); margin-bottom:.6rem; line-height:1.35; }
 .proj-desc { font-size:.85rem; color:var(--muted); line-height:1.75; flex:1; margin-bottom:1.1rem; }
@@ -348,10 +359,10 @@ section { padding:110px 6%; }
    CERTIFICATIONS
 ════════════════════════════════ */
 #certifications { background:var(--bg); }
-.cert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:1.2rem; }
+.cert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:.8rem; }
 .cert-card {
   background:var(--surface); border:1px solid var(--border);
-  border-radius:16px; padding:1.8rem; position:relative; overflow:hidden; transition:all .3s;
+  border-radius:16px; padding:1.2rem; position:relative; overflow:hidden; transition:all .3s;
 }
 .cert-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); opacity:0; transition:opacity .3s; }
 .cert-card:hover { transform:translateY(-4px); border-color:rgba(255,140,97,.2); }
@@ -384,7 +395,7 @@ section { padding:110px 6%; }
    CONTACT
 ════════════════════════════════ */
 #contact { background:var(--bg); }
-.contact-wrap { display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; }
+.contact-wrap { display:grid; grid-template-columns:1fr 1.2fr; gap:2rem; }
 .contact-left h3 { font-family:'Lora',serif; font-size:1.4rem; color:var(--text); margin-bottom:.8rem; }
 .contact-left p { color:var(--muted); font-size:.95rem; line-height:1.8; margin-bottom:2rem; }
 .cinfo { display:flex; flex-direction:column; gap:.9rem; margin-bottom:2rem; }
@@ -778,7 +789,7 @@ footer a { color:var(--accent); text-decoration:none; }
       <h3>I'd love to hear from you</h3>
       <p>I respond fast — usually within a day. If you're looking for someone curious, hardworking, and genuinely excited about their work, let's chat.</p>
       <div class="cinfo">
-        <div class="cinfo-row"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection#3551505045401b545b5b5c5004000506755258545c591b565a58" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'"><span class="__cf_email__" data-cfemail="375352524742195659595e520602070477505a565e5b1954585a">[email&#160;protected]</span></a></span></div>
+        <div class="cinfo-row"><i class="fas fa-envelope"></i><span><a href="mailto:deepu.annie1503@gmail.com" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">deepu.annie1503@gmail.com</a></span></div>
         <div class="cinfo-row"><i class="fas fa-phone"></i><span>+91 9059255995</span></div>
         <div class="cinfo-row"><i class="fas fa-map-marker-alt"></i><span>Visakhapatnam, Andhra Pradesh</span></div>
       </div>
@@ -807,7 +818,7 @@ footer a { color:var(--accent); text-decoration:none; }
   <span>Made with ♥ in Visakhapatnam</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // ── THEME ──
   const root = document.documentElement;
   function applyTheme(t) {
@@ -816,23 +827,15 @@ footer a { color:var(--accent); text-decoration:none; }
     document.getElementById('themeIcon').className = t==='light' ? 'fas fa-moon' : 'fas fa-sun';
     document.getElementById('themeLabel').textContent = t==='light' ? 'Dark' : 'Light';
   }
-
   const saved = localStorage.getItem('theme') ||
     (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-
   applyTheme(saved);
-
-  function toggleTheme() {
-    applyTheme(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
-  }
+  function toggleTheme() { applyTheme(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark'); }
 
   // ── SCROLL REVEAL ──
   const obs = new IntersectionObserver(entries => {
-    entries.forEach((e,i) => {
-      if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*90);
-    });
+    entries.forEach((e,i) => { if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*90); });
   }, { threshold:0.1 });
-
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
   // ── TABS ──
@@ -847,61 +850,35 @@ footer a { color:var(--accent); text-decoration:none; }
   function toggleNav() {
     const n = document.getElementById('navLinks');
     const open = n.style.display === 'flex';
-
-    if(open){
-      n.style.display='none';
-      return;
-    }
-
+    if(open) { n.style.display='none'; return; }
     const bg = root.getAttribute('data-theme')==='light'
-      ? 'rgba(250,248,244,0.98)'
-      : 'rgba(15,14,23,0.98)';
-
-    n.style.cssText =
-      `display:flex;
-       flex-direction:column;
-       position:absolute;
-       top:64px;
-       left:0;
-       right:0;
-       background:${bg};
-       padding:1.5rem 6%;
-       gap:1.2rem;
-       border-bottom:1px solid var(--border);
-       z-index:199`;
+      ? 'rgba(250,248,244,0.98)' : 'rgba(15,14,23,0.98)';
+    n.style.cssText = `display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:${bg};padding:1.5rem 6%;gap:1.2rem;border-bottom:1px solid var(--border);z-index:199`;
   }
-
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.addEventListener('click',()=>{
-      if(window.innerWidth < 960){
-        document.getElementById('navLinks').style.display='none';
-      }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      if(window.innerWidth < 960) document.getElementById('navLinks').style.display='none';
     });
   });
 
   // ── CONTACT FORM ──
-  function sendMsg(e){
+  function sendMsg(e) {
     e.preventDefault();
-
     const btn = document.getElementById('sendBtn');
-
-    btn.textContent="✓ Sent! I'll be in touch soon 😊";
-    btn.style.background='var(--green)';
-
+    btn.textContent = "✓ Sent! I'll be in touch soon 😊";
+    btn.style.background = 'var(--green)';
     setTimeout(()=>{
-      btn.innerHTML='Send it <i class="fas fa-paper-plane" style="margin-left:.4rem"></i>';
-      btn.style.background='';
-      e.target.reset();
-    },3000);
+      btn.innerHTML = 'Send it <i class="fas fa-paper-plane" style="margin-left:.4rem"></i>';
+      btn.style.background=''; e.target.reset();
+    }, 3000);
   }
 
   // ── NAV SHRINK ──
-  window.addEventListener('scroll',()=>{
-    document.getElementById('nav').style.padding =
-      window.scrollY>60 ? '.7rem 6%' : '1.1rem 6%';
+  window.addEventListener('scroll', ()=>{
+    document.getElementById('nav').style.padding = window.scrollY>60 ? '.7rem 6%' : '1.1rem 6%';
   });
 
-  // ── ACTIVE NAV HIGHLIGHT ──
+  // ── ACTIVE NAV ──
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".nav-links a");
 
@@ -912,20 +889,18 @@ footer a { color:var(--accent); text-decoration:none; }
       const sectionTop = section.offsetTop - 120;
       const sectionHeight = section.clientHeight;
 
-      if (
-        window.scrollY >= sectionTop &&
-        window.scrollY < sectionTop + sectionHeight
-      ) {
+      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
         current = section.getAttribute("id");
       }
     });
 
     navLinks.forEach((link) => {
       link.classList.remove("active");
-
       if (link.getAttribute("href") === "#" + current) {
         link.classList.add("active");
       }
     });
   });
 </script>
+</body>
+</html>
