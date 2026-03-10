@@ -53,7 +53,9 @@ body {
   transition:background .4s,color .4s;
 }
 
-/* ════════════════════════════════   NAV   ════════════════════════════════ */
+/* ════════════════════════════════
+   NAV
+════════════════════════════════ */
 nav {
   position:fixed; top:0; width:100%; z-index:200;
   padding:1.1rem 6%;
@@ -100,7 +102,9 @@ nav {
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
 .hamburger span { width:22px; height:1.5px; background:var(--text); display:block; transition:background .4s; }
 
-/* ════════════════════════════════   HERO  ════════════════════════════════ */
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
 #home {
   min-height:100vh;
   display:flex; flex-direction:column; justify-content:center;
@@ -132,7 +136,7 @@ nav {
 }
 .hero-name {
   font-family:'Lora',serif;
-  font-size:clamp(2.2rem,5vw,4.2rem);
+  font-size:clamp(1.8rem,3.5vw,3rem);
   font-weight:700; line-height:1.05;
   letter-spacing:-.03em; color:var(--text);
   margin-bottom:1.2rem;
@@ -209,7 +213,9 @@ nav {
 @keyframes scrollbounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
-/* ════════════════════════════════   SECTION COMMON   ════════════════════════════════ */
+/* ════════════════════════════════
+   SECTION COMMON
+════════════════════════════════ */
 section { padding:70px 6%; max-width:1200px; margin:auto; }
 .sec-eyebrow {
   font-family:'DM Mono',monospace; font-size:.72rem;
@@ -227,7 +233,9 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .65s ease,transform .65s ease; }
 .reveal.visible { opacity:1; transform:none; }
 
-/* ════════════════════════════════   ABOUT   ════════════════════════════════ */
+/* ════════════════════════════════
+   ABOUT
+════════════════════════════════ */
 #about { background:var(--surface); }
 .about-wrap { display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:start; }
 .about-body p { color:var(--muted); margin-bottom:1.3rem; font-size:1rem; line-height:1.85; max-width:650px; }
@@ -292,7 +300,9 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 .mini-stat-num { font-family:'Lora',serif; font-size:2rem; font-weight:700; color:var(--accent); line-height:1; }
 .mini-stat-lbl { font-size:.72rem; color:var(--muted); margin-top:.3rem; font-weight:500; }
 
-/* ════════════════════════════════   SKILLS   ════════════════════════════════ */
+/* ════════════════════════════════
+   SKILLS
+════════════════════════════════ */
 #skills { background:var(--bg); }
 .skills-tabs { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; }
 .stab {
@@ -317,7 +327,9 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 .skill-tile.featured i { color:var(--accent); }
 .skill-tile.featured span { color:var(--text); font-weight:700; }
 
-/* ════════════════════════════════   PROJECTS   ════════════════════════════════ */
+/* ════════════════════════════════
+   PROJECTS
+════════════════════════════════ */
 #projects { background:var(--surface); }
 .proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem; }
 .proj-card {
@@ -343,7 +355,9 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 .plink { font-size:.8rem; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:.35rem; font-weight:600; transition:color .2s; }
 .plink:hover { color:var(--accent); }
 
-/* ════════════════════════════════   CERTIFICATIONS   ════════════════════════════════ */
+/* ════════════════════════════════
+   CERTIFICATIONS
+════════════════════════════════ */
 #certifications { background:var(--bg); }
 .cert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:.8rem; }
 .cert-card {
@@ -358,7 +372,9 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 .cert-name { font-size:.95rem; font-weight:700; color:var(--text); margin-bottom:.4rem; line-height:1.35; }
 .cert-desc { font-size:.82rem; color:var(--muted); line-height:1.65; }
 
-/* ════════════════════════════════   ACHIEVEMENTS   ════════════════════════════════ */
+/* ════════════════════════════════
+   ACHIEVEMENTS
+════════════════════════════════ */
 #achievements { background:var(--surface); }
 .ach-card {
   background:linear-gradient(135deg,rgba(255,140,97,.04),rgba(167,139,250,.06));
@@ -375,7 +391,9 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 .ach-btn { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#fff; padding:.7rem 1.6rem; border-radius:50px; font-size:.85rem; font-weight:700; text-decoration:none; transition:all .2s; box-shadow:0 4px 16px rgba(255,140,97,.25); }
 .ach-btn:hover { transform:translateY(-2px); opacity:.9; }
 
-/* ════════════════════════════════   CONTACT   ════════════════════════════════ */
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
 #contact { background:var(--bg); }
 .contact-wrap { display:grid; grid-template-columns:1fr 1.2fr; gap:2rem; }
 .contact-left h3 { font-family:'Lora',serif; font-size:1.4rem; color:var(--text); margin-bottom:.8rem; }
@@ -395,9 +413,26 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 .c-form button { background:var(--accent); color:#fff; padding:.9rem; border:none; border-radius:50px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.92rem; cursor:pointer; transition:all .2s; box-shadow:0 4px 20px rgba(255,140,97,.25); }
 .c-form button:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(255,140,97,.35); }
 
-/* ════════════════════════════════   FOOTER   ════════════════════════════════ */
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
 footer { padding:2rem 6%; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:.82rem; color:var(--muted); transition:border-color .4s; }
 footer a { color:var(--accent); text-decoration:none; }
+
+/* cursor glow */
+body::after {
+  content:''; position:fixed; pointer-events:none; z-index:0;
+  width:320px; height:320px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,140,97,.1), transparent 70%);
+  left:var(--cx,50%); top:var(--cy,50%);
+  transform:translate(-50%,-50%);
+  transition:left .12s ease, top .12s ease;
+}
+[data-theme="light"] body::after {
+  background:radial-gradient(circle, rgba(201,84,26,.07), transparent 70%);
+}
+/* typing cursor blink */
+@keyframes blink { 0%,100%{border-color:var(--accent)} 50%{border-color:transparent} }
 
 /* scroll progress bar */
 #progress-bar { position:fixed; top:0; left:0; height:3px; background:var(--accent); width:0%; z-index:9999; transition:width .1s; }
@@ -416,10 +451,111 @@ footer a { color:var(--accent); text-decoration:none; }
   100% { background-position:0% 50%; }
 }
 
-/* project preview images */
-.proj-thumb img { width:100%; height:100%; object-fit:cover; }
+/* ════════════════════════════════   POLISH UPGRADES   ════════════════════════════════ */
 
-/* ════════════════════════════════   RESPONSIVE   ════════════════════════════════ */
+/* Glow on accent buttons */
+.btn-primary { box-shadow:0 4px 20px rgba(255,140,97,.35); }
+.btn-primary:hover { box-shadow:0 8px 40px rgba(255,140,97,.55); }
+
+/* Section alternating background tint */
+#skills    { background: var(--bg); }
+#projects  { background: var(--surface); }
+#certifications { background: var(--bg); }
+#achievements   { background: var(--surface); }
+#contact   { background: var(--bg); }
+
+/* Nicer section title underline */
+.sec-title {
+  position: relative;
+  display: inline-block;
+}
+.sec-title::after {
+  content: '';
+  display: block;
+  width: 48px; height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-top: .5rem;
+}
+
+/* Skill tile polish */
+.skill-tile {
+  cursor: default;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.skill-tile:hover {
+  box-shadow: 0 8px 24px rgba(167,139,250,.2);
+}
+
+/* Cert card icon glow on hover */
+.cert-card:hover .cert-ico {
+  background: rgba(255,140,97,.15);
+  border-color: rgba(255,140,97,.35);
+}
+
+/* Project card polish */
+.proj-title { letter-spacing: -.02em; }
+.proj-type  { letter-spacing: .08em; }
+
+/* Hobby card polish */
+.hobby-card { box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+
+/* Contact form inputs */
+.c-form input, .c-form textarea {
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.12);
+}
+.c-form input:focus, .c-form textarea:focus {
+  box-shadow: 0 0 0 3px rgba(255,140,97,.12), inset 0 1px 3px rgba(0,0,0,.08);
+}
+
+/* Footer upgrade */
+footer {
+  background: var(--surface);
+  padding: 1.8rem 6%;
+}
+
+/* Smooth page transitions */
+a, button { transition: all .2s ease; }
+
+/* Nav active dot */
+.nav-links a.active {
+  font-weight: 700;
+}
+
+/* About quote style (in case it's re-added) */
+.about-quote {
+  border-left: 3px solid var(--accent);
+  background: rgba(255,140,97,.04);
+  border-radius: 0 10px 10px 0;
+}
+
+/* Mini stat number glow */
+.mini-stat-num {
+  text-shadow: 0 0 20px rgba(255,140,97,.3);
+}
+
+/* Scroll hint fade */
+.scroll-hint { opacity: .35; }
+
+/* Achievement card polish */
+.ach-card {
+  box-shadow: 0 8px 40px rgba(255,140,97,.06);
+}
+
+/* ── LIGHT MODE POLISH ── */
+[data-theme="light"] .skill-tile {
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+[data-theme="light"] .proj-card {
+  box-shadow: 0 2px 12px rgba(0,0,0,.07);
+}
+[data-theme="light"] footer {
+  background: var(--surface);
+}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
 @media (max-width:960px) {
   .about-wrap { grid-template-columns:1fr; gap:3rem; }
   .proj-grid { grid-template-columns:1fr 1fr; }
@@ -476,8 +612,9 @@ footer a { color:var(--accent); text-decoration:none; }
   <h1 class="hero-name">Hi, I'm <span class="wave">👋</span><br><span class="italic">Yellapu Deepthi Annie</span></h1>
 
   <p class="hero-intro">
-    A <strong>CSE final-year student</strong> from Visakhapatnam who genuinely loves building things — from ML models that help farmers price tomatoes fairly, to full-stack MERN apps, to the occasional pretty Canva invite for a friend's birthday. I care about <strong>making tech feel human</strong>.
+    A <strong>CSE final-year student</strong> from Visakhapatnam who genuinely loves building things — from ML models that help farmers price crops fairly, to full-stack MERN apps, to the occasional pretty Canva invite for a friend's birthday. I care about <strong>making tech feel human</strong>.
   </p>
+  <p class="hero-fun">Currently exploring: <span id="typing" style="color:var(--accent);border-right:2px solid var(--accent);padding-right:2px;animation:blink .7s step-end infinite"></span></p>
 
   <div class="hero-btns">
     <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> See my work</a>
@@ -550,6 +687,7 @@ footer a { color:var(--accent); text-decoration:none; }
         <div class="info-card-label">🎓 Education</div>
         <div class="info-card-value">Gayatri Vidya Parishad College of Engineering for Women</div>
         <div class="info-card-sub">B.Tech Computer Science &amp; Engineering</div>
+        <div class="info-card-sub" style="margin-top:.3rem;color:var(--accent);font-weight:600;">CGPA: 7.34</div>
       </div>
       <div class="info-card">
         <div class="info-card-label">📍 Location</div>
@@ -776,10 +914,23 @@ footer a { color:var(--accent); text-decoration:none; }
   </div>
 </section>
 
+<!-- GITHUB STATS -->
+<section id="github" style="background:var(--bg)">
+  <div class="reveal">
+    <p class="sec-eyebrow">06 · GitHub</p>
+    <h2 class="sec-title">My Coding Activity</h2>
+    <p class="sec-sub">A snapshot of what I've been building and committing.</p>
+  </div>
+  <div class="reveal" style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:.5rem">
+    <img src="https://github-readme-stats.vercel.app/api?username=Y-deeps&show_icons=true&theme=tokyonight&hide_border=true&bg_color=1e1d28&title_color=ff8c61&icon_color=a78bfa&text_color=ede9e3" style="border-radius:14px;max-width:100%;height:auto" alt="GitHub Stats"/>
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Y-deeps&layout=compact&theme=tokyonight&hide_border=true&bg_color=1e1d28&title_color=ff8c61&text_color=ede9e3" style="border-radius:14px;max-width:100%;height:auto" alt="Top Languages"/>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="reveal">
-    <p class="sec-eyebrow">06 · Contact</p>
+    <p class="sec-eyebrow">07 · Contact</p>
     <h2 class="sec-title">Let's talk 👋</h2>
     <p class="sec-sub">Whether it's an opportunity, a collab, or just a chat about tech — my inbox is open.</p>
   </div>
@@ -788,7 +939,7 @@ footer a { color:var(--accent); text-decoration:none; }
       <h3>I'd love to hear from you</h3>
       <p>I respond fast — usually within a day. If you're looking for someone curious, hardworking, and genuinely excited about their work, let's chat.</p>
       <div class="cinfo">
-        <div class="cinfo-row"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection#2f4b4a4a5f5a014e4141464a1e1a1f1c6f48424e4643014c4042" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'"><span class="__cf_email__" data-cfemail="771312120702591619191e124642474437101a161e1b5914181a">[email&#160;protected]</span></a></span></div>
+        <div class="cinfo-row"><i class="fas fa-envelope"></i><span><a href="mailto:deepu.annie1503@gmail.com" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">deepu.annie1503@gmail.com</a></span></div>
         <div class="cinfo-row"><i class="fas fa-phone"></i><span>+91 9059255995</span></div>
         <div class="cinfo-row"><i class="fas fa-map-marker-alt"></i><span>Visakhapatnam, Andhra Pradesh</span></div>
       </div>
@@ -819,7 +970,7 @@ footer a { color:var(--accent); text-decoration:none; }
   <span>Made with ♥ in Visakhapatnam</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // ── THEME ──
   const root = document.documentElement;
   function applyTheme(t) {
@@ -862,18 +1013,6 @@ footer a { color:var(--accent); text-decoration:none; }
     });
   });
 
-  // ── CONTACT FORM ──
-  function sendMsg(e) {
-    e.preventDefault();
-    const btn = document.getElementById('sendBtn');
-    btn.textContent = "✓ Sent! I'll be in touch soon 😊";
-    btn.style.background = 'var(--green)';
-    setTimeout(()=>{
-      btn.innerHTML = 'Send it <i class="fas fa-paper-plane" style="margin-left:.4rem"></i>';
-      btn.style.background=''; e.target.reset();
-    }, 3000);
-  }
-
   // ── NAV SHRINK ──
   window.addEventListener('scroll', ()=>{
     document.getElementById('nav').style.padding = window.scrollY>60 ? '.7rem 6%' : '1.1rem 6%';
@@ -882,24 +1021,18 @@ footer a { color:var(--accent); text-decoration:none; }
   // ── ACTIVE NAV ──
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".nav-links a");
-
   window.addEventListener("scroll", () => {
     let current = "";
-
     sections.forEach((section) => {
       const sectionTop = section.offsetTop - 120;
       const sectionHeight = section.clientHeight;
-
       if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
         current = section.getAttribute("id");
       }
     });
-
     navLinks.forEach((link) => {
       link.classList.remove("active");
-      if (link.getAttribute("href") === "#" + current) {
-        link.classList.add("active");
-      }
+      if (link.getAttribute("href") === "#" + current) link.classList.add("active");
     });
   });
 
@@ -907,8 +1040,32 @@ footer a { color:var(--accent); text-decoration:none; }
   window.addEventListener("scroll", () => {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    document.getElementById("progress-bar").style.width = scrolled + "%";
+    document.getElementById("progress-bar").style.width = (winScroll / height * 100) + "%";
+  });
+
+  // ── TYPING ANIMATION ──
+  const phrases = [
+    "Cloud Computing ☁️",
+    "AI / Machine Learning 🤖",
+    "Full Stack Development 💻",
+    "Data Science & Analytics 📊"
+  ];
+  let pi = 0, ci = 0, deleting = false;
+  function typeEffect() {
+    const el = document.getElementById("typing");
+    if (!el) return;
+    const word = phrases[pi];
+    el.textContent = deleting ? word.substring(0, ci--) : word.substring(0, ci++);
+    if (!deleting && ci === word.length + 1) { deleting = true; setTimeout(typeEffect, 1400); return; }
+    if (deleting && ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    setTimeout(typeEffect, deleting ? 38 : 75);
+  }
+  typeEffect();
+
+  // ── CURSOR GLOW ──
+  document.addEventListener("mousemove", e => {
+    document.documentElement.style.setProperty('--cx', e.clientX + 'px');
+    document.documentElement.style.setProperty('--cy', e.clientY + 'px');
   });
 </script>
 </body>
