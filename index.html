@@ -1,638 +1,931 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepthi Annie - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deepthi Annie — CSE Student & Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<style>
+/* ── DARK THEME ── */
+:root, [data-theme="dark"] {
+  --bg:        #0f0e17;
+  --surface:   #17161f;
+  --surface2:  #1e1d28;
+  --card:      #1e1d28;
+  --border:    rgba(255,255,255,0.08);
+  --accent:    #ff8c61;
+  --accent2:   #a78bfa;
+  --green:     #6ee7b7;
+  --text:      #ede9e3;
+  --muted:     #8a8699;
+  --nav-bg:    rgba(15,14,23,0.9);
+  --shadow:    rgba(0,0,0,0.45);
+  --tag-bg:    rgba(167,139,250,0.1);
+  --tag-border:rgba(167,139,250,0.22);
+  --tag-color: #c4b5fd;
+}
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg:        #faf8f4;
+  --surface:   #f0ede7;
+  --surface2:  #e6e2da;
+  --card:      #e6e2da;
+  --border:    rgba(0,0,0,0.09);
+  --accent:    #c9541a;
+  --accent2:   #6d4de8;
+  --green:     #047857;
+  --text:      #1c1820;
+  --muted:     #6b6478;
+  --nav-bg:    rgba(250,248,244,0.93);
+  --shadow:    rgba(0,0,0,0.1);
+  --tag-bg:    rgba(109,77,232,0.08);
+  --tag-border:rgba(109,77,232,0.18);
+  --tag-color: #6d4de8;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg); color:var(--text);
+  overflow-x:hidden; line-height:1.75;
+  transition:background .4s,color .4s;
+}
+
+/* ════════════════════════════════
+   NAV
+════════════════════════════════ */
+nav {
+  position:fixed; top:0; width:100%; z-index:200;
+  padding:1.1rem 6%;
+  display:flex; justify-content:space-between; align-items:center;
+  background:var(--nav-bg); backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:padding .3s,background .4s,border-color .4s;
+}
+.nav-wordmark {
+  font-family:'Lora',serif; font-style:italic;
+  font-size:1.2rem; color:var(--text); text-decoration:none;
+}
+.nav-wordmark em { color:var(--accent); font-style:normal; }
+.nav-links { display:flex; gap:1.8rem; list-style:none; }
+.nav-links a {
+  color:var(--muted); text-decoration:none;
+  font-size:0.82rem; font-weight:500; transition:color .2s;
+}
+.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+.nav-r { display:flex; align-items:center; gap:1rem; }
+
+/* theme pill */
+.theme-pill {
+  display:flex; align-items:center; gap:.5rem;
+  background:var(--surface2); border:1px solid var(--border);
+  border-radius:100px; padding:.35rem .9rem;
+  cursor:pointer; font-size:.78rem; color:var(--muted);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  transition:all .2s; user-select:none;
+}
+.theme-pill:hover { border-color:var(--accent); color:var(--accent); }
+.theme-pill i { font-size:.75rem; }
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+.hamburger span { width:22px; height:1.5px; background:var(--text); display:block; transition:background .4s; }
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+#home {
+  min-height:100vh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:130px 6% 80px; position:relative; overflow:hidden;
+}
+.hero-deco {
+  position:absolute; border-radius:50%; filter:blur(120px); pointer-events:none;
+}
+.deco1 { width:600px; height:600px; background:rgba(255,140,97,.07); top:-150px; right:-80px; }
+.deco2 { width:400px; height:400px; background:rgba(167,139,250,.07); bottom:0; left:-80px; }
+
+.hero-tag {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.78rem; font-weight:600; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--accent);
+  margin-bottom:1.4rem;
+  animation:fadeUp .5s ease both;
+}
+.hero-tag .dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--green);
+  animation:ripple 1.8s infinite;
+}
+@keyframes ripple {
+  0%   { box-shadow:0 0 0 0 rgba(110,231,183,.5); }
+  70%  { box-shadow:0 0 0 8px rgba(110,231,183,0); }
+  100% { box-shadow:0 0 0 0 rgba(110,231,183,0); }
+}
+.hero-name {
+  font-family:'Lora',serif;
+  font-size:clamp(3.2rem,7vw,6rem);
+  font-weight:700; line-height:1.05;
+  letter-spacing:-.03em; color:var(--text);
+  margin-bottom:1.2rem;
+  animation:fadeUp .5s .1s ease both;
+}
+.hero-name .wave {
+  display:inline-block;
+  animation:wave 2.5s ease-in-out 1.2s both;
+  transform-origin:70% 80%;
+}
+@keyframes wave {
+  0%,60%,100% { transform:rotate(0deg); }
+  10%,30%     { transform:rotate(18deg); }
+  20%,40%     { transform:rotate(-8deg); }
+}
+.hero-name .italic { font-style:italic; color:var(--accent); }
+
+.hero-intro {
+  font-size:clamp(1rem,1.8vw,1.15rem); color:var(--muted);
+  max-width:620px; line-height:1.85;
+  margin-bottom:.8rem;
+  animation:fadeUp .5s .2s ease both;
+}
+.hero-intro strong { color:var(--text); font-weight:600; }
+
+.hero-fun {
+  font-family:'Lora',serif; font-style:italic;
+  font-size:.95rem; color:var(--muted);
+  margin-bottom:2.5rem; opacity:.7;
+  animation:fadeUp .5s .3s ease both;
+}
+
+.hero-btns {
+  display:flex; flex-wrap:wrap; gap:.9rem;
+  margin-bottom:3rem;
+  animation:fadeUp .5s .4s ease both;
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--accent); color:#fff;
+  padding:.78rem 1.9rem; border-radius:50px;
+  font-weight:700; font-size:.88rem; text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 4px 20px rgba(255,140,97,.3);
+}
+.btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(255,140,97,.4); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:.5rem;
+  border:1.5px solid var(--border); color:var(--text);
+  padding:.78rem 1.9rem; border-radius:50px;
+  font-weight:500; font-size:.88rem; text-decoration:none;
+  transition:all .2s;
+}
+.btn-outline:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+.hero-socials {
+  display:flex; gap:.8rem;
+  animation:fadeUp .5s .5s ease both;
+}
+.soc-link {
+  width:40px; height:40px; border-radius:50%;
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--muted); text-decoration:none; font-size:.95rem; transition:all .2s;
+}
+.soc-link:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-3px); }
+
+.scroll-hint {
+  position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:.4rem;
+  color:var(--muted); font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; opacity:.4;
+  animation:scrollbounce 2.2s ease-in-out infinite;
+}
+@keyframes scrollbounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* ════════════════════════════════
+   SECTION COMMON
+════════════════════════════════ */
+section { padding:110px 6%; }
+.sec-eyebrow {
+  font-family:'DM Mono',monospace; font-size:.72rem;
+  color:var(--accent); text-transform:uppercase;
+  letter-spacing:.15em; margin-bottom:.6rem;
+}
+.sec-title {
+  font-family:'Lora',serif;
+  font-size:clamp(2rem,4vw,2.8rem);
+  font-weight:700; color:var(--text);
+  letter-spacing:-.025em; line-height:1.2; margin-bottom:.7rem;
+}
+.sec-sub { color:var(--muted); font-size:1rem; max-width:520px; line-height:1.75; margin-bottom:3.5rem; }
+
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .65s ease,transform .65s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ════════════════════════════════
+   ABOUT
+════════════════════════════════ */
+#about { background:var(--surface); }
+.about-wrap { display:grid; grid-template-columns:1.2fr 1fr; gap:5rem; align-items:start; }
+.about-body p { color:var(--muted); margin-bottom:1.3rem; font-size:1rem; line-height:1.85; }
+.about-body p strong { color:var(--text); }
+.about-body p em { font-style:italic; color:var(--accent); font-family:'Lora',serif; }
+
+.about-quote {
+  border-left:3px solid var(--accent);
+  padding:.9rem 1.4rem; margin:1.8rem 0;
+  font-family:'Lora',serif; font-style:italic;
+  font-size:1.05rem; color:var(--text);
+  background:rgba(255,140,97,.04); border-radius:0 8px 8px 0;
+}
+
+/* hobbies */
+.hobbies-block { margin-top:2rem; }
+.hobbies-label {
+  font-size:.8rem; font-weight:700; color:var(--accent);
+  letter-spacing:.06em; text-transform:uppercase;
+  margin-bottom:.9rem; display:flex; align-items:center; gap:.5rem;
+}
+.hobbies-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+.hobby-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:1rem 1.1rem;
+  display:flex; flex-direction:column; gap:.15rem;
+  transition:border-color .2s,transform .2s;
+}
+.hobby-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+.hobby-emoji { font-size:1.25rem; line-height:1; margin-bottom:.25rem; }
+.hobby-name { font-size:.86rem; font-weight:700; color:var(--text); }
+.hobby-desc { font-size:.75rem; color:var(--muted); line-height:1.5; }
+
+/* about pills */
+.about-pills { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.5rem; }
+.about-pill {
+  padding:.35rem 1rem; border-radius:100px;
+  border:1px solid var(--border); font-size:.8rem; color:var(--muted);
+  display:flex; align-items:center; gap:.45rem; transition:all .2s;
+}
+.about-pill:hover { border-color:var(--accent); color:var(--text); }
+.about-pill i { color:var(--accent); font-size:.75rem; }
+
+/* about sidebar */
+.about-side { display:flex; flex-direction:column; gap:1.2rem; }
+.info-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:14px; padding:1.4rem 1.6rem;
+  transition:border-color .3s,transform .3s;
+}
+.info-card:hover { border-color:var(--accent); transform:translateY(-3px); }
+.info-card-label { font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:.3rem; }
+.info-card-value { font-size:.95rem; font-weight:600; color:var(--text); line-height:1.4; }
+.info-card-sub { font-size:.82rem; color:var(--muted); margin-top:.15rem; }
+
+.stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+.mini-stat {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:1.1rem; text-align:center; transition:border-color .3s;
+}
+.mini-stat:hover { border-color:var(--accent2); }
+.mini-stat-num { font-family:'Lora',serif; font-size:2rem; font-weight:700; color:var(--accent); line-height:1; }
+.mini-stat-lbl { font-size:.72rem; color:var(--muted); margin-top:.3rem; font-weight:500; }
+
+/* ════════════════════════════════
+   SKILLS
+════════════════════════════════ */
+#skills { background:var(--bg); }
+.skills-tabs { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2rem; }
+.stab {
+  padding:.5rem 1.2rem; border-radius:100px;
+  border:1.5px solid var(--border); background:transparent;
+  color:var(--muted); font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.82rem; font-weight:600; cursor:pointer; transition:all .2s;
+}
+.stab.active,.stab:hover { border-color:var(--accent); color:var(--accent); background:rgba(255,140,97,.05); }
+.spanel { display:none; }
+.spanel.active { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:.9rem; }
+.skill-tile {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:1.2rem .8rem;
+  display:flex; flex-direction:column; align-items:center; gap:.6rem;
+  text-align:center; transition:all .25s;
+}
+.skill-tile:hover { border-color:var(--accent2); transform:translateY(-4px); background:var(--card); }
+.skill-tile i { font-size:1.4rem; color:var(--accent2); }
+.skill-tile span { font-size:.78rem; font-weight:600; color:var(--muted); }
+.skill-tile.featured { border-color:rgba(255,140,97,.3); background:rgba(255,140,97,.05); }
+.skill-tile.featured i { color:var(--accent); }
+.skill-tile.featured span { color:var(--text); font-weight:700; }
+
+/* ════════════════════════════════
+   PROJECTS
+════════════════════════════════ */
+#projects { background:var(--surface); }
+.proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.proj-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:18px; overflow:hidden;
+  display:flex; flex-direction:column; transition:all .3s;
+}
+.proj-card:hover { border-color:rgba(255,140,97,.35); transform:translateY(-6px); box-shadow:0 24px 60px var(--shadow); }
+.proj-card.big { grid-column:span 2; flex-direction:row; }
+.proj-thumb {
+  background:var(--surface2);
+  display:flex; align-items:center; justify-content:center; min-height:130px;
+}
+.proj-card.big .proj-thumb { width:220px; flex-shrink:0; min-height:unset; }
+.proj-thumb i { font-size:2.2rem; color:var(--muted); opacity:.4; }
+.proj-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; }
+.proj-type { font-family:'DM Mono',monospace; font-size:.68rem; color:var(--accent); text-transform:uppercase; letter-spacing:.1em; margin-bottom:.5rem; }
+.proj-title { font-family:'Lora',serif; font-size:1.15rem; font-weight:700; color:var(--text); margin-bottom:.6rem; line-height:1.35; }
+.proj-desc { font-size:.85rem; color:var(--muted); line-height:1.75; flex:1; margin-bottom:1.1rem; }
+.proj-tags { display:flex; flex-wrap:wrap; gap:.45rem; margin-bottom:1.1rem; }
+.ptag { font-size:.7rem; padding:.25rem .75rem; border-radius:100px; background:var(--tag-bg); border:1px solid var(--tag-border); color:var(--tag-color); font-weight:600; }
+.proj-links { display:flex; gap:1rem; }
+.plink { font-size:.8rem; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:.35rem; font-weight:600; transition:color .2s; }
+.plink:hover { color:var(--accent); }
+
+/* ════════════════════════════════
+   CERTIFICATIONS
+════════════════════════════════ */
+#certifications { background:var(--bg); }
+.cert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:1.2rem; }
+.cert-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:16px; padding:1.8rem; position:relative; overflow:hidden; transition:all .3s;
+}
+.cert-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--accent),var(--accent2)); opacity:0; transition:opacity .3s; }
+.cert-card:hover { transform:translateY(-4px); border-color:rgba(255,140,97,.2); }
+.cert-card:hover::after { opacity:1; }
+.cert-ico { width:44px; height:44px; border-radius:10px; background:rgba(255,140,97,.08); border:1px solid rgba(255,140,97,.15); display:flex; align-items:center; justify-content:center; margin-bottom:1.1rem; }
+.cert-ico i { font-size:1.2rem; color:var(--accent); }
+.cert-name { font-size:.95rem; font-weight:700; color:var(--text); margin-bottom:.4rem; line-height:1.35; }
+.cert-desc { font-size:.82rem; color:var(--muted); line-height:1.65; }
+
+/* ════════════════════════════════
+   ACHIEVEMENTS
+════════════════════════════════ */
+#achievements { background:var(--surface); }
+.ach-card {
+  background:linear-gradient(135deg,rgba(255,140,97,.04),rgba(167,139,250,.06));
+  border:1px solid rgba(255,140,97,.15);
+  border-radius:20px; padding:3rem;
+  display:flex; gap:2.5rem; align-items:flex-start;
+}
+.ach-icon-big { width:72px; height:72px; border-radius:18px; background:rgba(255,140,97,.1); border:1px solid rgba(255,140,97,.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.ach-icon-big i { font-size:1.8rem; color:var(--accent); }
+.ach-body h3 { font-family:'Lora',serif; font-size:1.5rem; color:var(--text); margin-bottom:.6rem; }
+.ach-body p { color:var(--muted); font-size:.95rem; line-height:1.75; margin-bottom:1.5rem; }
+.ach-badges { display:flex; flex-wrap:wrap; gap:.7rem; margin-bottom:1.5rem; }
+.ach-badge { padding:.38rem 1rem; border-radius:100px; background:rgba(255,140,97,.08); border:1px solid rgba(255,140,97,.2); color:var(--accent); font-size:.78rem; font-weight:700; }
+.ach-btn { display:inline-flex; align-items:center; gap:.5rem; background:var(--accent); color:#fff; padding:.7rem 1.6rem; border-radius:50px; font-size:.85rem; font-weight:700; text-decoration:none; transition:all .2s; box-shadow:0 4px 16px rgba(255,140,97,.25); }
+.ach-btn:hover { transform:translateY(-2px); opacity:.9; }
+
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
+#contact { background:var(--bg); }
+.contact-wrap { display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; }
+.contact-left h3 { font-family:'Lora',serif; font-size:1.4rem; color:var(--text); margin-bottom:.8rem; }
+.contact-left p { color:var(--muted); font-size:.95rem; line-height:1.8; margin-bottom:2rem; }
+.cinfo { display:flex; flex-direction:column; gap:.9rem; margin-bottom:2rem; }
+.cinfo-row { display:flex; align-items:center; gap:1rem; padding:.9rem 1.2rem; background:var(--surface); border:1px solid var(--border); border-radius:12px; font-size:.87rem; transition:border-color .2s; }
+.cinfo-row:hover { border-color:var(--accent); }
+.cinfo-row i { color:var(--accent); width:16px; text-align:center; }
+.cinfo-row span { color:var(--text); }
+.c-socials { display:flex; gap:.7rem; }
+.c-form { display:flex; flex-direction:column; gap:1rem; }
+.c-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.c-form input,.c-form textarea { width:100%; background:var(--surface); border:1.5px solid var(--border); border-radius:12px; padding:.85rem 1.1rem; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; font-size:.88rem; outline:none; transition:border-color .2s,background .4s; }
+.c-form input:focus,.c-form textarea:focus { border-color:var(--accent); }
+.c-form input::placeholder,.c-form textarea::placeholder { color:var(--muted); }
+.c-form textarea { resize:vertical; min-height:125px; }
+.c-form button { background:var(--accent); color:#fff; padding:.9rem; border:none; border-radius:50px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:.92rem; cursor:pointer; transition:all .2s; box-shadow:0 4px 20px rgba(255,140,97,.25); }
+.c-form button:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(255,140,97,.35); }
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer { padding:2rem 6%; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:.82rem; color:var(--muted); transition:border-color .4s; }
+footer a { color:var(--accent); text-decoration:none; }
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media (max-width:960px) {
+  .about-wrap { grid-template-columns:1fr; gap:3rem; }
+  .proj-grid { grid-template-columns:1fr 1fr; }
+  .proj-card.big { grid-column:span 2; flex-direction:column; }
+  .proj-card.big .proj-thumb { width:100%; min-height:130px; }
+  .contact-wrap { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .ach-card { flex-direction:column; }
+}
+@media (max-width:640px) {
+  section { padding:70px 5%; }
+  #home { padding:110px 5% 70px; }
+  .proj-grid { grid-template-columns:1fr; }
+  .proj-card.big { grid-column:span 1; }
+  .hobbies-grid { grid-template-columns:1fr; }
+  .c-row { grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h3>Portfolio</h3>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#skills" class="nav-link">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#projects" class="nav-link">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#certifications" class="nav-link">Certifications</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#achievements" class="nav-link">Achievements</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-            <div class="nav-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm <span class="highlight">Yellapu Deepthi Annie</span></h1>
-                <p class="hero-subtitle">CSE Student | Gayatri Vidya Parishad College of Engineering for Women</p>
-                <p class="hero-description">
-                    who enjoys building meaningful digital experiences by combining technology, data, and creativity. My core interests lie in Cloud Computing, Machine Learning, Artificial Intelligence, and Data Analysis, where I focus on transforming real-world problems into practical, scalable solutions.
-                    I’ve worked on a diverse range of projects—from full-stack MERN applications and Salesforce CRM systems to machine learning models in healthcare and data-driven platforms. I enjoy diving deep into problem-solving, writing clean and efficient code, and understanding how systems work end-to-end.
-                    Alongside my technical journey, I’m also a creative freelancer, skilled in Canva and Figma, with experience in digital invitation design, photo editing, and video editing. This creative side helps me bring a strong sense of UI/UX, storytelling, and visual clarity into everything I build.
-                    Naturally curious and a fast learner, I’m comfortable with project planning, collaboration, and communication, and I enjoy working in dynamic environments where learning never stops. I’m passionate about exploring emerging technologies and creating solutions that are not only functional, but also intuitive and visually engaging.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                    <a href="#" class="btn btn-outline" id="download-resume">Download Resume</a>
-                </div>
-                <div class="hero-social">
-                    <a href="https://github.com/Y-deeps" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/deepthi-annie-23871124a" class="social-icon" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.instagram.com/deepthi.1501" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/919059255995" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="profile-placeholder">
-                    <i class="fas fa-user"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-wordmark">deepthi<em>.</em></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Say hi 👋</a></li>
+  </ul>
+  <div class="nav-r">
+    <button class="theme-pill" onclick="toggleTheme()" id="themePill">
+      <i class="fas fa-sun" id="themeIcon"></i>
+      <span id="themeLabel">Light</span>
+    </button>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        A curious and adaptable CSE student with interests in Machine Learning, AI, Cloud Computing, and Data Analysis. 
-                        Strong analytical, problem-solving, and communication skills with a passion for UI/UX design, creativity, and innovation.
-                    </p>
-                    <p>
-                        I'm passionate about solving real-world problems using cutting-edge technologies. My journey in tech has been driven 
-                        by curiosity and a desire to create impactful solutions that make a difference in people's lives.
-                    </p>
-                    <div class="about-info">
-                        <div class="info-item">
-                            <span class="info-label">Education:</span>
-                            <span class="info-value">B.Tech CSE (2022-2026)</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">College:</span>
-                            <span class="info-value">GVP College for Women</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">CGPA:</span>
-                            <span class="info-value">7.34</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <h3 class="stat-number">9+</h3>
-                        <p class="stat-label">Projects Completed</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 class="stat-number">5+</h3>
-                        <p class="stat-label">Certifications</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 class="stat-number">10+</h3>
-                        <p class="stat-label">Technologies</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section id="home">
+  <div class="hero-deco deco1"></div>
+  <div class="hero-deco deco2"></div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-java"></i>
-                            <span>Java</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>C</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>C++</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>R</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>ML & Data</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Scikit-learn</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>Pandas</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-calculator"></i>
-                            <span>NumPy</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-language"></i>
-                            <span>NLP</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-robot"></i>
-                            <span>Machine Learning</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web & Cloud</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>MERN Stack</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-globe"></i>
-                            <span>Full Stack</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-google-cloud"></i>
-                            <span>Google Cloud</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-aws"></i>
-                            <span>AWS</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cloud"></i>
-                            <span>Cloud Computing</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Design</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>VS Code</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>Eclipse</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-book"></i>
-                            <span>Jupyter</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-canva"></i>
-                            <span>Canva</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-figma"></i>
-                            <span>Figma</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="hero-tag"><span class="dot"></span> Open to internships &amp; Job opportunities</div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Smart Pricing and Quality Prediction</h3>
-                        <p class="project-description">
-                            An innovative system combining Machine Learning, IoT, and Blockchain to predict tomato quality 
-                            using Visual Quality Index (VQI) and Computer-Aided Seed Phenotyping Interface (CASPI).
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">IoT</span>
-                            <span class="tech-tag">Blockchain</span>
-                            <span class="tech-tag">Python</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> View Details
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Cardiovascular Disease Prediction</h3>
-                        <p class="project-description">
-                            A machine learning model that predicts cardiovascular diseases using patient data and medical 
-                            parameters to assist in early diagnosis and prevention.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">ML</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> View Details
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-music"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Spotify Genre Segmentation</h3>
-                        <p class="project-description">
-                            Data analysis project that segments music genres using Spotify dataset, implementing clustering 
-                            algorithms to categorize songs based on audio features.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Data Analysis</span>
-                            <span class="tech-tag">Clustering</span>
-                            <span class="tech-tag">Spotify API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> View Details
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-school"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Smart Campus Portal</h3>
-                        <p class="project-description">
-                            A comprehensive campus management system built with MERN stack for students and faculty to manage 
-                            courses, assignments, and campus resources.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">MERN Stack</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-laptop"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Laptop Rental CRM</h3>
-                        <p class="project-description">
-                            A customer relationship management system built on Salesforce platform for managing laptop 
-                            rentals, inventory, and customer relationships.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Salesforce</span>
-                            <span class="tech-tag">CRM</span>
-                            <span class="tech-tag">Apex</span>
-                            <span class="tech-tag">Lightning</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> View Details
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-user-md"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Doctor Appointment System</h3>
-                        <p class="project-description">
-                            A web-based appointment booking system for doctors and patients using Spring Boot, enabling 
-                            easy scheduling and management of medical appointments.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">REST API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Advocate Appointment System</h3>
-                        <p class="project-description">
-                            An appointment management platform for legal professionals and clients to schedule consultations 
-                            and manage case-related meetings efficiently.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Web Development</span>
-                            <span class="tech-tag">Database</span>
-                            <span class="tech-tag">Frontend</span>
-                            <span class="tech-tag">Backend</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> View Details
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-store"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Sopera Florals</h3>
-                        <p class="project-description">
-                            A complete e-commerce platform for floral business with product catalog, shopping cart, 
-                            payment integration, and order management system.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">E-commerce</span>
-                            <span class="tech-tag">Full Stack</span>
-                            <span class="tech-tag">Payment Gateway</span>
-                            <span class="tech-tag">Database</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-plus-circle"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">More Projects</h3>
-                        <p class="project-description">
-                            Additional projects including data analysis, web applications, and machine learning models 
-                            showcasing diverse technical skills and problem-solving abilities.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Various</span>
-                            <span class="tech-tag">Technologies</span>
-                            <span class="tech-tag">Innovation</span>
-                            <span class="tech-tag">Research</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fas fa-external-link-alt"></i> View All
-                            </a>
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <h1 class="hero-name">Hi, I'm <span class="wave">👋</span><br><span class="italic">Deepthi Annie</span></h1>
 
-    <!-- Certifications & Training Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2 class="section-title">Certifications & Training</h2>
-            <div class="certifications-grid">
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fab fa-aws"></i>
-                    </div>
-                    <h3>AWS Cloud Internship</h3>
-                    <p>Hands-on experience with AWS services and cloud architecture</p>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fab fa-google-cloud"></i>
-                    </div>
-                    <h3>Google Cloud Cybersecurity Internship</h3>
-                    <p>Security best practices and cloud cybersecurity implementation</p>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Salesforce Developer Internship</h3>
-                    <p>CRM development and Salesforce platform expertise</p>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI & ML Certification - Corizo</h3>
-                    <p>Comprehensive machine learning and AI fundamentals</p>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>AI & ML Certification - IIPE</h3>
-                    <p>Advanced AI/ML concepts and practical applications</p>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Cisco Python Essentials</h3>
-                    <p>Python programming fundamentals and best practices</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <p class="hero-intro">
+    A <strong>CSE final-year student</strong> from Visakhapatnam who genuinely loves building things — from ML models that help farmers price tomatoes fairly, to full-stack MERN apps, to the occasional pretty Canva invite for a friend's birthday. I care about <strong>making tech feel human</strong>.
+  </p>
+  <p class="hero-fun">Currently exploring: cloud, AI/ML, and how to explain gradient descent to my grandmother.</p>
 
-    <!-- Achievements Section -->
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <h2 class="section-title">Achievements</h2>
-            <div class="achievements-content">
-                <div class="achievement-item">
-                    <div class="achievement-icon">
-                        <i class="fab fa-google"></i>
-                    </div>
-                    <div class="achievement-text">
-                        <h3>Google SkillBoost Badges</h3>
-                        <p>Earned multiple badges in Cloud Computing, Machine Learning, Data Science, and Generative AI</p>
-                        <div class="badge-list">
-                            <span class="badge">Cloud Architecture</span>
-                            <span class="badge">Machine Learning</span>
-                            <span class="badge">Data Science</span>
-                            <span class="badge">GenAI</span>
-                        </div>
-                        <div class="achievement-links">
-                            <a href="https://www.skills.google/public_profiles/01a3b1d0-a360-46eb-9c1d-eecf5f6553ab" class="achievement-link" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> View My Google Skills Profile
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> See my work</a>
+    <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i> Say hello</a>
+    <a href="#" class="btn-outline"><i class="fas fa-download"></i> Resume</a>
+  </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>
-                        I'm always interested in hearing about new projects and opportunities. 
-                        Whether you have a question or just want to say hi, feel free to reach out!
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>deepu.annie1503@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91 9059255995</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>36-93-239, Kancharapalem, Indiranager 4, near Bajaj Showroom, Visakhapatnam, Andhra Pradesh</span>
-                        </div>
-                    </div>
-                    <div class="contact-social">
-                        <a href="https://github.com/Y-deeps" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/deepthi-annie-23871124a" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://www.instagram.com/deepthi.1501" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/919059255995" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+  <div class="hero-socials">
+    <a href="https://github.com/Y-deeps" class="soc-link" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/deepthi-annie-23871124a" class="soc-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/deepthi.1501" class="soc-link" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/919059255995" class="soc-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; YDeepthiAnnie. All rights reserved.</p>
-        </div>
-    </footer>
+  <div class="scroll-hint"><span>scroll</span><i class="fas fa-chevron-down"></i></div>
+</section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <p class="sec-eyebrow">01 · About me</p>
+    <h2 class="sec-title">A bit about who I am</h2>
+    <p class="sec-sub">Beyond the resume, here's the actual human.</p>
+  </div>
+  <div class="about-wrap">
+    <div class="about-body reveal">
+      <p>I'm a final-year <strong>B.Tech Computer Science</strong> student at Gayatri Vidya Parishad College of Engineering for Women, Visakhapatnam. My tech journey started with one question — <em>"how does this actually work?"</em> — and that curiosity still hasn't left me.</p>
+      <p>I've worked across a wide range: <strong>ML models for healthcare</strong>, full-stack <strong>MERN apps</strong> (I've built real projects end-to-end with MongoDB, Express, React, and Node), Salesforce CRM systems, data analysis, and a complete e-commerce platform. I like seeing things through from idea to working product.</p>
+
+<p>Outside of code, I'm a <em>creative freelancer</em> — designing digital invitations, editing photos and videos, working in Canva and Figma. I think of design the same way I think of code: something that solves a problem and feels good to use.</p>
+      <p>I'm a fast learner, a decent communicator, and the person in a group project who actually writes the README. <strong>Looking for a role where I can keep growing and ship real things.</strong></p>
+
+      <div class="hobbies-block">
+        <p class="hobbies-label"><i class="fas fa-heart"></i> When I'm not coding</p>
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <span class="hobby-emoji">✏️</span>
+            <span class="hobby-name">Pencil Sketching</span>
+            <span class="hobby-desc">Portraits &amp; figures — pencil is my oldest creative tool</span>
+          </div>
+          <div class="hobby-card">
+            <span class="hobby-emoji">🎵</span>
+            <span class="hobby-name">Listening to Music</span>
+            <span class="hobby-desc">Always something playing while I work or think</span>
+          </div>
+          <div class="hobby-card">
+            <span class="hobby-emoji">📚</span>
+            <span class="hobby-name">Reading Novels</span>
+            <span class="hobby-desc">A good story pulls me in completely</span>
+          </div>
+          <div class="hobby-card">
+            <span class="hobby-emoji">✍️</span>
+            <span class="hobby-name">Chat Stories &amp; Fan Fiction</span>
+            <span class="hobby-desc">Yes, I read and write them — no shame</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-pills" style="margin-top:1.8rem">
+        <span class="about-pill"><i class="fas fa-map-marker-alt"></i> Visakhapatnam, AP</span>
+        <span class="about-pill"><i class="fas fa-graduation-cap"></i> B.Tech CSE · 2026</span>
+        <span class="about-pill"><i class="fas fa-star"></i> CGPA 7.34</span>
+        <span class="about-pill"><i class="fas fa-paint-brush"></i> UI/UX + design</span>
+        <span class="about-pill"><i class="fas fa-language"></i> English · Telugu</span>
+      </div>
+    </div>
+
+    <div class="about-side reveal">
+      <div class="info-card">
+        <div class="info-card-label">🎓 Education</div>
+        <div class="info-card-value">Gayatri Vidya Parishad College of Engineering for Women</div>
+        <div class="info-card-sub">B.Tech Computer Science &amp; Engineering</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">📍 Location</div>
+        <div class="info-card-value">Visakhapatnam, AP</div>
+        <div class="info-card-sub">Open to remote &amp; relocation</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">💡 Currently into</div>
+        <div class="info-card-value" style="font-size:.88rem;line-height:1.6">Cloud · AI/ML · Full Stack · Data Analytics · Full Stack Java · Data Science</div>
+        <div class="info-card-sub">Always learning something new</div>
+      </div>
+      <div class="stat-row">
+        <div class="mini-stat"><div class="mini-stat-num">9+</div><div class="mini-stat-lbl">Projects</div></div>
+        <div class="mini-stat"><div class="mini-stat-num">6+</div><div class="mini-stat-lbl">Certs</div></div>
+        <div class="mini-stat"><div class="mini-stat-num">10+</div><div class="mini-stat-lbl">Tech stack</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <p class="sec-eyebrow">02 · Skills</p>
+    <h2 class="sec-title">What I work with</h2>
+    <p class="sec-sub">The tools I reach for — and actually know how to use.</p>
+  </div>
+  <div class="reveal">
+    <div class="skills-tabs">
+      <button class="stab active" onclick="switchTab('prog',this)">Programming</button>
+      <button class="stab" onclick="switchTab('ml',this)">ML &amp; Data</button>
+      <button class="stab" onclick="switchTab('web',this)">Web &amp; Cloud</button>
+      <button class="stab" onclick="switchTab('tools',this)">Tools &amp; Design</button>
+    </div>
+
+    <div id="tab-prog" class="spanel active">
+      <div class="skill-tile"><i class="fab fa-python"></i><span>Python</span></div>
+      <div class="skill-tile"><i class="fab fa-java"></i><span>Java</span></div>
+      <div class="skill-tile"><i class="fas fa-chart-line"></i><span>R</span></div>
+      <div class="skill-tile"><i class="fab fa-html5"></i><span>HTML</span></div>
+      <div class="skill-tile"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+    </div>
+
+    <div id="tab-ml" class="spanel">
+      <div class="skill-tile"><i class="fas fa-brain"></i><span>Scikit-learn</span></div>
+      <div class="skill-tile"><i class="fas fa-database"></i><span>Pandas</span></div>
+      <div class="skill-tile"><i class="fas fa-calculator"></i><span>NumPy</span></div>
+      <div class="skill-tile"><i class="fas fa-language"></i><span>NLP</span></div>
+      <div class="skill-tile"><i class="fas fa-robot"></i><span>Machine Learning</span></div>
+      <div class="skill-tile"><i class="fas fa-chart-area"></i><span>Matplotlib</span></div>
+      <div class="skill-tile"><i class="fas fa-chart-bar"></i><span>Seaborn</span></div>
+    </div>
+
+    <div id="tab-web" class="spanel">
+      <div class="skill-tile featured"><i class="fas fa-layer-group"></i><span>MERN Stack</span></div>
+      <div class="skill-tile"><i class="fab fa-react"></i><span>React</span></div>
+      <div class="skill-tile"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+      <div class="skill-tile"><i class="fas fa-database"></i><span>MongoDB</span></div>
+      <div class="skill-tile"><i class="fas fa-server"></i><span>Express.js</span></div>
+      <div class="skill-tile"><i class="fab fa-google"></i><span>Google Cloud</span></div>
+      <div class="skill-tile"><i class="fab fa-aws"></i><span>AWS</span></div>
+      <div class="skill-tile"><i class="fas fa-cloud"></i><span>Salesforce</span></div>
+      <div class="skill-tile"><i class="fab fa-java"></i><span>Spring Boot</span></div>
+    </div>
+
+    <div id="tab-tools" class="spanel">
+      <div class="skill-tile"><i class="fas fa-code"></i><span>VS Code</span></div>
+      <div class="skill-tile"><i class="fas fa-book"></i><span>Jupyter</span></div>
+      <div class="skill-tile"><i class="fab fa-figma"></i><span>Figma</span></div>
+      <div class="skill-tile"><i class="fas fa-palette"></i><span>Canva</span></div>
+      <div class="skill-tile"><i class="fas fa-code-branch"></i><span>Git &amp; GitHub</span></div>
+      <div class="skill-tile"><i class="fas fa-circle"></i><span>Eclipse</span></div>
+      <div class="skill-tile"><i class="fas fa-file-powerpoint"></i><span>PowerPoint</span></div>
+      <div class="skill-tile"><i class="fas fa-file-word"></i><span>Word</span></div>
+      <div class="skill-tile"><i class="fas fa-file-excel"></i><span>Excel</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <p class="sec-eyebrow">03 · Projects</p>
+    <h2 class="sec-title">Things I've built</h2>
+    <p class="sec-sub">Each one taught me something. Here are the ones I'm most proud of.</p>
+  </div>
+  <div class="proj-grid reveal">
+
+    <div class="proj-card big">
+      <div class="proj-thumb"><i class="fas fa-seedling"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">⭐ Flagship · ML + IoT + Blockchain</p>
+        <h3 class="proj-title">Smart Pricing &amp; Quality Prediction for Crops</h3>
+        <p class="proj-desc">Farmers often get underpaid because buyers manually judge quality. This system uses ML, IoT sensors, and Blockchain to predict tomato quality (VQI + CASPI) and suggest fair, data-backed prices — removing the middleman's bias.</p>
+        <div class="proj-tags"><span class="ptag">Machine Learning</span><span class="ptag">IoT</span><span class="ptag">Blockchain</span><span class="ptag">Python</span><span class="ptag">Computer Vision</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Details</a><a href="https://github.com/Y-deeps" class="plink" target="_blank"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb"><i class="fas fa-heartbeat"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">Healthcare · ML</p>
+        <h3 class="proj-title">Cardiovascular Disease Prediction</h3>
+        <p class="proj-desc">Predicts cardiovascular risk from patient data to support early diagnosis before symptoms escalate.</p>
+        <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Scikit-learn</span><span class="ptag">Pandas</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb"><i class="fas fa-music"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">Data Analysis · Clustering</p>
+        <h3 class="proj-title">Spotify Genre Segmentation</h3>
+        <p class="proj-desc">Clusters songs by genre using Spotify audio features. Turns out tempo and energy say a lot about music taste.</p>
+        <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">Clustering</span><span class="ptag">Spotify API</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb"><i class="fas fa-school"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">Full Stack · MERN</p>
+        <h3 class="proj-title">Smart Campus Portal</h3>
+        <p class="proj-desc">Campus management for students and faculty — courses, assignments, resources. Built end-to-end with the MERN stack.</p>
+        <div class="proj-tags"><span class="ptag">React</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span><span class="ptag">Express.js</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Demo</a><a href="#" class="plink"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb"><i class="fas fa-laptop"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">CRM · Salesforce</p>
+        <h3 class="proj-title">Laptop Rental CRM</h3>
+        <p class="proj-desc">Salesforce CRM for managing laptop rentals and customer data — my first real dive into enterprise platforms.</p>
+        <div class="proj-tags"><span class="ptag">Salesforce</span><span class="ptag">Apex</span><span class="ptag">Lightning</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb"><i class="fas fa-user-md"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">Web App · Java</p>
+        <h3 class="proj-title">Doctor Appointment System</h3>
+        <p class="proj-desc">Spring Boot REST API for booking medical appointments with role-based access for doctors and patients.</p>
+        <div class="proj-tags"><span class="ptag">Spring Boot</span><span class="ptag">Java</span><span class="ptag">MySQL</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Demo</a><a href="#" class="plink"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb"><i class="fas fa-briefcase"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">Web App · Legal</p>
+        <h3 class="proj-title">Advocate Appointment System</h3>
+        <p class="proj-desc">Platform for legal professionals and clients to schedule consultations and manage case meetings efficiently.</p>
+        <div class="proj-tags"><span class="ptag">Full Stack</span><span class="ptag">Database</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-thumb"><i class="fas fa-store"></i></div>
+      <div class="proj-body">
+        <p class="proj-type">E-Commerce · Full Stack</p>
+        <h3 class="proj-title">Sopera Florals</h3>
+        <p class="proj-desc">Complete flower shop e-commerce app — catalog, cart, payment gateway. I also designed the UI for this one.</p>
+        <div class="proj-tags"><span class="ptag">Full Stack</span><span class="ptag">Payment Gateway</span></div>
+        <div class="proj-links"><a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Demo</a><a href="#" class="plink"><i class="fab fa-github"></i> GitHub</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="reveal">
+    <p class="sec-eyebrow">04 · Certifications</p>
+    <h2 class="sec-title">What I've learned formally</h2>
+    <p class="sec-sub">Internships and certifications that shaped how I think about tech.</p>
+  </div>
+  <div class="cert-grid reveal">
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-brain"></i></div><h3 class="cert-name">Artificial Intelligence</h3><p class="cert-desc">Corizo</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-palette"></i></div><h3 class="cert-name">Graphic Design</h3><p class="cert-desc">Corizo</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fab fa-aws"></i></div><h3 class="cert-name">AWS Cloud Virtual Internship</h3><p class="cert-desc">EduSkills</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fab fa-google"></i></div><h3 class="cert-name">Google Cloud Cybersecurity Virtual Internship</h3><p class="cert-desc">EduSkills</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-cloud"></i></div><h3 class="cert-name">Salesforce Developer Virtual Internship</h3><p class="cert-desc">Salesforce</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fab fa-aws"></i></div><h3 class="cert-name">AWS Academy Cloud Foundations</h3><p class="cert-desc">AWS Academy Graduate</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-tasks"></i></div><h3 class="cert-name">Project Management Fundamentals</h3><p class="cert-desc">IBM</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-robot"></i></div><h3 class="cert-name">Machine Learning — Fundamentals &amp; Applications</h3><p class="cert-desc">Indian Institute of Petroleum and Energy, Visakhapatnam</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fab fa-google"></i></div><h3 class="cert-name">Google Colab Machine Learning App</h3><p class="cert-desc">Perfect Plan B Private Limited</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-shield-alt"></i></div><h3 class="cert-name">Cyber Security</h3><p class="cert-desc">Corizo</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-microchip"></i></div><h3 class="cert-name">Fundamentals of Computing Machinery</h3><p class="cert-desc">Gayatri Vidya Parishad College of Engineering for Women</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-wifi"></i></div><h3 class="cert-name">Insights into Internet of Things</h3><p class="cert-desc">Gayatri Vidya Parishad College of Engineering for Women</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fas fa-users"></i></div><h3 class="cert-name">Human Resource</h3><p class="cert-desc">Corizo</p></div>
+    <div class="cert-card"><div class="cert-ico"><i class="fab fa-python"></i></div><h3 class="cert-name">Python Course</h3><p class="cert-desc">CodeTantra</p></div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="reveal">
+    <p class="sec-eyebrow">05 · Achievements</p>
+    <h2 class="sec-title">A thing I'm proud of 🏅</h2>
+  </div>
+  <div class="ach-card reveal">
+    <div class="ach-icon-big"><i class="fab fa-google"></i></div>
+    <div class="ach-body">
+      <h3>Google SkillBoost Badges</h3>
+      <p>Spent a bunch of evenings on Google Cloud's SkillBoost platform and came out with badges across Cloud Architecture, Machine Learning, Data Science, and Generative AI. It's one of the best ways I've found to learn cloud hands-on — you build real things in real environments, not just watch videos.</p>
+      <div class="ach-badges">
+        <span class="ach-badge">☁️ Cloud Architecture</span>
+        <span class="ach-badge">🤖 Machine Learning</span>
+        <span class="ach-badge">📊 Data Science</span>
+        <span class="ach-badge">✨ Generative AI</span>
+      </div>
+      <a href="https://www.skills.google/public_profiles/01a3b1d0-a360-46eb-9c1d-eecf5f6553ab" target="_blank" class="ach-btn"><i class="fas fa-external-link-alt"></i> See my Google profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <p class="sec-eyebrow">06 · Contact</p>
+    <h2 class="sec-title">Let's talk 👋</h2>
+    <p class="sec-sub">Whether it's an opportunity, a collab, or just a chat about tech — my inbox is open.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-left reveal">
+      <h3>I'd love to hear from you</h3>
+      <p>I respond fast — usually within a day. If you're looking for someone curious, hardworking, and genuinely excited about their work, let's chat.</p>
+      <div class="cinfo">
+        <div class="cinfo-row"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection#3551505045401b545b5b5c5004000506755258545c591b565a58" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'"><span class="__cf_email__" data-cfemail="375352524742195659595e520602070477505a565e5b1954585a">[email&#160;protected]</span></a></span></div>
+        <div class="cinfo-row"><i class="fas fa-phone"></i><span>+91 9059255995</span></div>
+        <div class="cinfo-row"><i class="fas fa-map-marker-alt"></i><span>Visakhapatnam, Andhra Pradesh</span></div>
+      </div>
+      <div class="c-socials">
+        <a href="https://github.com/Y-deeps" class="soc-link" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/deepthi-annie-23871124a" class="soc-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/deepthi.1501" class="soc-link" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/919059255995" class="soc-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <form class="c-form reveal" onsubmit="sendMsg(event)">
+      <div class="c-row">
+        <input type="text" placeholder="Your name" required/>
+        <input type="email" placeholder="Your email" required/>
+      </div>
+      <input type="text" placeholder="Subject — what's it about?" required/>
+      <textarea placeholder="Your message — don't be shy 😊" required></textarea>
+      <button type="submit" id="sendBtn">Send it <i class="fas fa-paper-plane" style="margin-left:.4rem"></i></button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 <a href="#home">Yellapu Deepthi Annie</a></span>
+  <span>Made with ♥ in Visakhapatnam</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── THEME ──
+  const root = document.documentElement;
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('theme', t);
+    document.getElementById('themeIcon').className = t==='light' ? 'fas fa-moon' : 'fas fa-sun';
+    document.getElementById('themeLabel').textContent = t==='light' ? 'Dark' : 'Light';
+  }
+
+  const saved = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+  applyTheme(saved);
+
+  function toggleTheme() {
+    applyTheme(root.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
+  }
+
+  // ── SCROLL REVEAL ──
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*90);
+    });
+  }, { threshold:0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // ── TABS ──
+  function switchTab(id, btn) {
+    document.querySelectorAll('.spanel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.stab').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── MOBILE NAV ──
+  function toggleNav() {
+    const n = document.getElementById('navLinks');
+    const open = n.style.display === 'flex';
+
+    if(open){
+      n.style.display='none';
+      return;
+    }
+
+    const bg = root.getAttribute('data-theme')==='light'
+      ? 'rgba(250,248,244,0.98)'
+      : 'rgba(15,14,23,0.98)';
+
+    n.style.cssText =
+      `display:flex;
+       flex-direction:column;
+       position:absolute;
+       top:64px;
+       left:0;
+       right:0;
+       background:${bg};
+       padding:1.5rem 6%;
+       gap:1.2rem;
+       border-bottom:1px solid var(--border);
+       z-index:199`;
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      if(window.innerWidth < 960){
+        document.getElementById('navLinks').style.display='none';
+      }
+    });
+  });
+
+  // ── CONTACT FORM ──
+  function sendMsg(e){
+    e.preventDefault();
+
+    const btn = document.getElementById('sendBtn');
+
+    btn.textContent="✓ Sent! I'll be in touch soon 😊";
+    btn.style.background='var(--green)';
+
+    setTimeout(()=>{
+      btn.innerHTML='Send it <i class="fas fa-paper-plane" style="margin-left:.4rem"></i>';
+      btn.style.background='';
+      e.target.reset();
+    },3000);
+  }
+
+  // ── NAV SHRINK ──
+  window.addEventListener('scroll',()=>{
+    document.getElementById('nav').style.padding =
+      window.scrollY>60 ? '.7rem 6%' : '1.1rem 6%';
+  });
+
+  // ── ACTIVE NAV HIGHLIGHT ──
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - 120;
+      const sectionHeight = section.clientHeight;
+
+      if (
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionTop + sectionHeight
+      ) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
