@@ -419,6 +419,26 @@ section { padding:70px 6%; max-width:1200px; margin:auto; }
 footer { padding:2rem 6%; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:.82rem; color:var(--muted); transition:border-color .4s; }
 footer a { color:var(--accent); text-decoration:none; }
 
+/* scroll progress bar */
+#progress-bar { position:fixed; top:0; left:0; height:3px; background:var(--accent); width:0%; z-index:9999; transition:width .1s; }
+
+/* animated hero gradient */
+.hero-gradient {
+  position:absolute; top:0; left:0; width:100%; height:100%;
+  background:linear-gradient(-45deg,rgba(255,140,97,0.12),rgba(167,139,250,0.12),rgba(110,231,183,0.1),rgba(255,140,97,0.12));
+  background-size:400% 400%;
+  animation:gradientMove 15s ease infinite;
+  z-index:-1; pointer-events:none;
+}
+@keyframes gradientMove {
+  0%   { background-position:0% 50%; }
+  50%  { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* project preview images */
+.proj-thumb img { width:100%; height:100%; object-fit:cover; }
+
 /* ════════════════════════════════
    RESPONSIVE
 ════════════════════════════════ */
@@ -443,6 +463,7 @@ footer a { color:var(--accent); text-decoration:none; }
 </style>
 </head>
 <body>
+<div id="progress-bar"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -468,6 +489,7 @@ footer a { color:var(--accent); text-decoration:none; }
 
 <!-- HERO -->
 <section id="home">
+  <div class="hero-gradient"></div>
   <div class="hero-deco deco1"></div>
   <div class="hero-deco deco2"></div>
 
@@ -483,7 +505,7 @@ footer a { color:var(--accent); text-decoration:none; }
   <div class="hero-btns">
     <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> See my work</a>
     <a href="#contact" class="btn-outline"><i class="fas fa-envelope"></i> Say hello</a>
-    <a href="#" class="btn-outline"><i class="fas fa-download"></i> Resume</a>
+    <a href="YellapuDeepthiAnnie_Resume.pdf" download class="btn-outline"><i class="fas fa-download"></i> Resume</a>
   </div>
 
   <div class="hero-socials">
@@ -639,12 +661,12 @@ footer a { color:var(--accent); text-decoration:none; }
   </div>
   <div class="proj-grid reveal">
 
-    <div class="proj-card big">
+    <div class="proj-card">
       <div class="proj-thumb"><i class="fas fa-seedling"></i></div>
       <div class="proj-body">
         <p class="proj-type">⭐ Flagship · ML + IoT + Blockchain</p>
         <h3 class="proj-title">Smart Pricing &amp; Quality Prediction for Crops</h3>
-        <p class="proj-desc">Farmers often get underpaid because buyers manually judge quality. This system uses ML, IoT sensors, and Blockchain to predict tomato quality (VQI + CASPI) and suggest fair, data-backed prices — removing the middleman's bias.</p>
+        <p class="proj-desc">Farmers often get underpaid because buyers manually judge quality. This system uses ML, IoT sensors, and Blockchain to predict crop quality (VQI + CASPI) and suggest fair, data-backed prices — removing the middleman's bias.</p>
         <div class="proj-tags"><span class="ptag">Machine Learning</span><span class="ptag">IoT</span><span class="ptag">Blockchain</span><span class="ptag">Python</span><span class="ptag">Computer Vision</span></div>
         <div class="proj-links"><a href="#" class="plink"><i class="fas fa-external-link-alt"></i> Details</a><a href="https://github.com/Y-deeps" class="plink" target="_blank"><i class="fab fa-github"></i> GitHub</a></div>
       </div>
@@ -789,7 +811,7 @@ footer a { color:var(--accent); text-decoration:none; }
       <h3>I'd love to hear from you</h3>
       <p>I respond fast — usually within a day. If you're looking for someone curious, hardworking, and genuinely excited about their work, let's chat.</p>
       <div class="cinfo">
-        <div class="cinfo-row"><i class="fas fa-envelope"></i><span><a href="mailto:deepu.annie1503@gmail.com" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">deepu.annie1503@gmail.com</a></span></div>
+        <div class="cinfo-row"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection#2f4b4a4a5f5a014e4141464a1e1a1f1c6f48424e4643014c4042" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'"><span class="__cf_email__" data-cfemail="771312120702591619191e124642474437101a161e1b5914181a">[email&#160;protected]</span></a></span></div>
         <div class="cinfo-row"><i class="fas fa-phone"></i><span>+91 9059255995</span></div>
         <div class="cinfo-row"><i class="fas fa-map-marker-alt"></i><span>Visakhapatnam, Andhra Pradesh</span></div>
       </div>
@@ -800,7 +822,9 @@ footer a { color:var(--accent); text-decoration:none; }
         <a href="https://wa.me/919059255995" class="soc-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
-    <form class="c-form reveal" onsubmit="sendMsg(event)">
+    <form class="c-form reveal" action="https://formsubmit.co/deepu.annie1503@gmail.com" method="POST">
+      <input type="hidden" name="_captcha" value="false"/>
+      <input type="hidden" name="_subject" value="New message from your portfolio!"/>
       <div class="c-row">
         <input type="text" placeholder="Your name" required/>
         <input type="email" placeholder="Your email" required/>
@@ -818,7 +842,7 @@ footer a { color:var(--accent); text-decoration:none; }
   <span>Made with ♥ in Visakhapatnam</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ── THEME ──
   const root = document.documentElement;
   function applyTheme(t) {
@@ -900,6 +924,14 @@ footer a { color:var(--accent); text-decoration:none; }
         link.classList.add("active");
       }
     });
+  });
+
+  // ── SCROLL PROGRESS BAR ──
+  window.addEventListener("scroll", () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById("progress-bar").style.width = scrolled + "%";
   });
 </script>
 </body>
