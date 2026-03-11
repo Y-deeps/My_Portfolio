@@ -926,31 +926,8 @@ a, button { transition: all .2s ease; }
       <h3>I'd love to hear from you</h3>
       <p>I respond fast — usually within a day. If you're looking for someone curious, hardworking, and genuinely excited about their work, let's chat.</p>
       <div class="cinfo">
-        <div class="cinfo-row">
-        <i class="fas fa-envelope"></i>
-          <span>
-            Primary:
-              <a href="mailto:deepu.annie1503@gmail.com"
-                style="color:var(--text);text-decoration:none;transition:color .2s"
-                onmouseover="this.style.color='var(--accent)'"
-                onmouseout="this.style.color='var(--text)'">
-                deepu.annie1503@gmail.com
-            </a>
-        </span>
-        </div>
-
-<div class="cinfo-row">
-<i class="fas fa-envelope-open"></i>
-<span>
-Alternate:
-<a href="mailto:deepu.annie1503@gmail.com"
-    style="color:var(--text);text-decoration:none;transition:color .2s"
-    onmouseover="this.style.color='var(--accent)'"
-    onmouseout="this.style.color='var(--text)'">
-    deepu.annie1503@gmail.com
-</a>
-</span>
-</div>
+        <div class="cinfo-row"><i class="fas fa-envelope"></i><span>Primary: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deepu.annie1503@gmail.com" target="_blank" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">deepu.annie1503@gmail.com</a></span></div>
+        <div class="cinfo-row"><i class="fas fa-envelope-open"></i><span>Alternate: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=deepthi.yellapu1503@gmail.com" target="_blank" style="color:var(--text);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text)'">deepthi.yellapu1503@gmail.com</a></span></div>
         <div class="cinfo-row"><i class="fas fa-phone"></i><span>+91 9059255995</span></div>
         <div class="cinfo-row"><i class="fas fa-map-marker-alt"></i><span>Visakhapatnam, Andhra Pradesh</span></div>
       </div>
@@ -965,11 +942,11 @@ Alternate:
       <input type="hidden" name="_captcha" value="false"/>
       <input type="hidden" name="_subject" value="New message from your portfolio!"/>
       <div class="c-row">
-        <input type="text" placeholder="Your name" required/>
-        <input type="email" placeholder="Your email" required/>
+        <input type="text" name="name" placeholder="Your name" required/>
+        <input type="email" name="email" placeholder="Your email" required/>
       </div>
-      <input type="text" placeholder="Subject — what's it about?" required/>
-      <textarea placeholder="Your message — don't be shy 😊" required></textarea>
+      <input type="text" name="subject" placeholder="Subject — what's it about?" required/>
+      <textarea name="message" placeholder="Your message — don't be shy 😊" required></textarea>
       <button type="submit" id="sendBtn">Send it <i class="fas fa-paper-plane" style="margin-left:.4rem"></i></button>
     </form>
   </div>
@@ -1106,7 +1083,10 @@ Alternate:
     e.preventDefault();
 
     const navHeight = document.getElementById("nav").offsetHeight;
-    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight + 5;
+    const targetPosition =
+      target.getBoundingClientRect().top +
+      window.pageYOffset -
+      navHeight + 5;
 
     window.scrollTo({
       top: targetPosition,
