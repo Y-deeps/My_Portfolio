@@ -112,14 +112,9 @@ The contact form includes client-side validation. To make it functional, you'll 
 2. Or implement your own server-side processing
 3. Update the form submission handler in `script.js`
 
-## License
-
-This portfolio template is open source and available under the [MIT License](LICENSE).
 
 ## Support
 
 If you need help customizing or have questions, feel free to reach out or check the code comments for detailed explanations of each feature.
 
 ---
-
-**Happy coding!** 🚀
